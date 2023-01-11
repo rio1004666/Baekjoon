@@ -48,6 +48,6 @@ ans = []
 cnt = 0
 go(0,'')
 ans.sort()
-print(cnt)
+
 print(ans[-1])
 print(ans[0])
