@@ -44,7 +44,7 @@ def dfs(pos,cx,cy,accum):
         if not in_range(nx,ny) : continue
         if visited[nx][ny] : continue
         if pos == 1:
-            visited[nx][ny] = True
+            visited[nx][ny] = True # 다음칸에는 안가겠다는 표시를 함
             dfs(pos+1,cx,cy,accum + board[nx][ny])
             visited[nx][ny] = False
         visited[nx][ny] = True
