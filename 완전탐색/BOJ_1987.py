@@ -37,25 +37,31 @@ def in_range(nx,ny):
 ans = 1
 def dfs(cx,cy,dist):
     global ans
+    # 백트래킹
+    # 최대거리로 해야하기때문에 모든 경우를 탐색해야한다
+    # 그 길이 유망한지 아닌지는 가봐알수있다
+    if not in_range(cx,cy):
+        return
+    if visited[cx][cy]:
+        return
+    if checkAlpha[ord(graph[cx][cy])-ord('A')]:
+        return
     ans = max(ans, dist)
     # 다음 탐색할 4방향의칸을 정할려고 함
-    for i in range(4):
-        nx,ny = cx + dx[i], cy + dy[i]
-        if not in_range(nx,ny) or visited[nx][ny]: continue
-        nalpha = ord(graph[nx][ny]) - ord('A')
-        if not checkAlpha[nalpha]:
-            visited[nx][ny] = True
-            checkAlpha[nalpha] = True
-            dfs(nx,ny,dist+1)
-            visited[nx][ny] = False
-            checkAlpha[nalpha] = False
+    calpha = ord(graph[cx][cy]) - ord('A')
+    checkAlpha[calpha] = True
+    visited[cx][cy] = True
+    dfs(cx,cy+1,dist+1)
+    dfs(cx+1,cy,dist+1)
+    dfs(cx,cy-1,dist+1)
+    dfs(cx-1,cy,dist+1)
+    checkAlpha[calpha] = False
+    visited[cx][cy] = False
 
 # 탐색이 끝나면 최대로 갈 수 있는 거리가 업데이트 되어 있음
 # 0,0부터 시작해서 다음 갈 곳을 정함
 # 초기 방문 설정 및 알파벳 체크 설정
-calpha = ord(graph[0][0]) - ord('A')
-checkAlpha[calpha] = True
-visited[0][0] = True
+
 dfs(0,0,1)
 print(ans)
 
