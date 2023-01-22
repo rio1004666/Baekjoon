@@ -18,18 +18,16 @@ def in_range(nx,ny):
 
 def bfs(sx,sy):
     global answer
-    q = set([(sx,sy,board[sx][sy])])
+    q = set([(sx,sy,board[sx][sy])]) # set 자료구조로 이미 방문했던 알파벳들을 이어붙이면서 그 경로를 다시는 방문하지 않도록 기록해둠
     while q:
         cx,cy,dist = q.pop()
+        print(dist)
         for i in range(4):
             nx,ny = cx + dx[i], cy + dy[i]
             if not in_range(nx,ny):continue
             if board[nx][ny] in dist:continue
             q.add((nx,ny,dist + board[nx][ny]))
             answer = max(answer, len(dist)+1)
-
-
-
 
 bfs(0,0)
 print(answer)
