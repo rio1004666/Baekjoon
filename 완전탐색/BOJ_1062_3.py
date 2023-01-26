@@ -19,7 +19,7 @@ for i in range(n):
         words[i] |= (1 << (ord(w) - ord('a')))
 # 일반적으로 2^n - 1 의 값까지 10진수를 2진수 비트로 표현하여 해당 원소를 선택했다면 비트가 1로 & 연산을 했을 경우 1이 되어 계산하는 방식이다
 # 이제 알파벳 26개 중에 k를 선택하여 각 단어를 읽을 수 있는지만 체크할 것이다
-candidiate = ['b','d','e','f','g','h','j','k','l','m','o','p','q','r','s','u','v','w','x','y','z']
+candidiate = [chr(num) for num in range(97,123) if not num in [ord('a'),ord('c'),ord('t'),ord('i'),ord('n')]]
 need = ['a','c','t','i','n']
 
 ans = 0

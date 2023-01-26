@@ -71,7 +71,6 @@ remain_selected = set(chr(i) for i in range(97,123)) - first_selected
 data = [si().rstrip()[4:-4] for _ in range(n)]
 
 def countReadableWord(data,learned):
-
     cnt = 0
     # 단어를 읽을 수 있는지 체크하기 위해 함수를 만듬
     for d in data:
